@@ -1,0 +1,30 @@
+# development dependencies go here
+-r base.txt
+
+# Docs
+Sphinx==1.4.1
+
+# Static analyzers
+flake8==2.5.4
+pylint==1.5.5
+pylint-common==0.2.2
+pylint-django==0.7.1
+pylint-celery==0.3
+
+# Test data
+factory_boy==2.7.0
+
+# Debugging
+django-debug-toolbar==1.4
+
+# Pytest 
+pytest==2.9.1
+pytest-django==2.9.1
+pytest-sugar==0.7.1
+
+# Coverage
+coverage==4.0.3
+django_coverage_plugin==1.3
+
+# Automation
+tox
