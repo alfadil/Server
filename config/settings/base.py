@@ -17,6 +17,7 @@ ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
 APPS_DIR = ROOT_DIR.path('sindan')
 
 env = environ.Env()
+environ.Env.read_env() # reading .env file
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -77,15 +78,17 @@ TEMPLATES = [
 DEBUG = env.bool('DEBUG', False)
 
 
-# Database
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+WSGI_APPLICATION = 'config.wsgi.application'
+
+# DATABASE
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
     'default': env.db('DATABASE_URL'),
-    }
 }
 
-DATABASES['default']['ATOMIC_REQUESTS'] = True
+#DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
