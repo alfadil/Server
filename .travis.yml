@@ -3,6 +3,18 @@ python:
   - "3.4"
   - "3.5"
 
+env:
+  - DATABASE_URL=psql://postgres@localhost:5432/sindan
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - psql -c 'create database sindan;' -U postgres
+
 # command to install dependencies
 install:
   - pip install -r requirements/dev.txt
