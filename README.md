@@ -1,5 +1,7 @@
 > **Warning:** A work in progress.
 
+[![Build](https://travis-ci.org/Sindan/Sindan.svg?branch=master)](https://travis-ci.org/Sindan/Sindan)
+
 # Sindan
 
 Sindan is an Agile project management software with focus on the following:
