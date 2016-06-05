@@ -59,8 +59,8 @@ INSTALLED_APPS += []
 # https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.loaders.cached.Loader
 TEMPLATES[0]['OPTIONS']['loaders'] = [
     ('django.template.loaders.cached.Loader', [
-        'django.template.loaders.filesystem.Loader', 
-        'django.template.loaders.app_directories.Loader', 
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
         ]),
 ]
 
@@ -115,4 +115,13 @@ LOGGING = {
             'propagate': True
         }
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
 }

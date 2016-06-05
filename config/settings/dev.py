@@ -38,6 +38,15 @@ DEBUG_TOOLBAR_CONFIG = {
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-# CELERY
-# In development, all tasks will be executed locally by blocking until the task returns
+# In development, all tasks will be executed locally by blocking
+# until the task returns
 CELERY_ALWAYS_EAGER = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+}

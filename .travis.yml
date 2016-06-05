@@ -4,7 +4,7 @@ python:
   - "3.5"
 
 env:
-  - DATABASE_URL=psql://postgres@localhost:5432/sindan
+  - DATABASE_URL=postgres://postgres@localhost/sindan
 
 services:
   - postgresql

@@ -17,7 +17,6 @@ ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
 APPS_DIR = ROOT_DIR.path('sindan')
 
 env = environ.Env()
-environ.Env.read_env() # reading .env file
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -85,7 +84,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL'),
+    'default': env.db('DATABASE_URL',default='postgres://postgres@localhost/sindan'),
 }
 
 #DATABASES['default']['ATOMIC_REQUESTS'] = True
