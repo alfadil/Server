@@ -36,7 +36,9 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = []
 
 # Apps specific for this project go here.
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'sindan.users'
+]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -87,7 +89,9 @@ DATABASES = {
     'default': env.db('DATABASE_URL',default='postgres://postgres@localhost/sindan'),
 }
 
-#DATABASES['default']['ATOMIC_REQUESTS'] = True
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+AUTH_USER_MODEL = 'users.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators

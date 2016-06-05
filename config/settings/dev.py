@@ -23,7 +23,7 @@ SECRET_KEY = env('SECRET_KEY', default='!1%%f8qx!p8fjpvc!p%+np&07=ctxul7pxu@)fia
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE_CLASSES += ['debug_toolbar.middleware.DebugToolbarMiddleware']
-INSTALLED_APPS += ['debug_toolbar']
+INSTALLED_APPS += ['debug_toolbar','django_extensions']
 
 
 DEBUG_TOOLBAR_CONFIG = {
@@ -50,3 +50,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     )
 }
+
+
+# Interctive Shell for debugging
+SHELL_PLUS = "bpython"
