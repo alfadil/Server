@@ -102,9 +102,15 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
+### Django ###
 *.log
+*.pot
+*.pyc
+__pycache__/
 local_settings.py
+db.sqlite3
+media
+
 
 # Flask instance folder
 instance/

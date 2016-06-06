@@ -8,9 +8,7 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-from __future__ import absolute_import, unicode_literals
-import os
-
+# pylint: disable=line-too-long
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
@@ -86,7 +84,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL',default='postgres://postgres@localhost/sindan'),
+    'default': env.db(
+        'DATABASE_URL',
+        default='postgres://postgres@localhost/sindan'
+    ),
 }
 
 DATABASES['default']['ATOMIC_REQUESTS'] = True
