@@ -17,13 +17,14 @@ DEBUG = env.bool('DEBUG', default=True)
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key only used for development and testing.
-SECRET_KEY = env('SECRET_KEY', default='!1%%f8qx!p8fjpvc!p%+np&07=ctxul7pxu@)fia6(i+4xo#k9')
+SECRET_KEY = env(
+    'SECRET_KEY', default='!1%%f8qx!p8fjpvc!p%+np&07=ctxul7pxu@)fia6(i+4xo#k9')
 
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 MIDDLEWARE_CLASSES += ['debug_toolbar.middleware.DebugToolbarMiddleware']
-INSTALLED_APPS += ['debug_toolbar','django_extensions']
+INSTALLED_APPS += ['debug_toolbar', 'django_extensions']
 
 
 DEBUG_TOOLBAR_CONFIG = {
@@ -45,12 +46,21 @@ CELERY_ALWAYS_EAGER = True
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ),
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
-    )
+    ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 
 # Interctive Shell for debugging
 SHELL_PLUS = "bpython"
+
+REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = (
+    'rest_framework.renderers.JSONRenderer',
+    'rest_framework.renderers.BrowsableAPIRenderer',
+)
+
+REST_FRAMEWORK['TEST_REQUEST_DEFAULT_FORMAT'] = 'json'

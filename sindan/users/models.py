@@ -6,6 +6,7 @@ import django.contrib.auth.models as auth
 
 from . import validators
 
+
 class User(auth.AbstractBaseUser, auth.PermissionsMixin):
     """
     Custom user model that behaves like Django default one.
@@ -30,7 +31,7 @@ class User(auth.AbstractBaseUser, auth.PermissionsMixin):
         error_messages={
             'unique': _(
                 "A user with that email address already exists."
-                ),
+            ),
         },
     )
 

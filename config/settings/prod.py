@@ -48,7 +48,7 @@ INSTALLED_APPS += []
 # Uploaded Media Files
 # ------------------------
 # See: http://django-storages.readthedocs.org/en/latest/index.html
-#INSTALLED_APPS += (
+# INSTALLED_APPS += (
 #    'storages',
 #)
 
@@ -61,7 +61,7 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
     ('django.template.loaders.cached.Loader', [
         'django.template.loaders.filesystem.Loader',
         'django.template.loaders.app_directories.Loader',
-        ]),
+    ]),
 ]
 
 # DATABASE CONFIGURATION
@@ -115,13 +115,4 @@ LOGGING = {
             'propagate': True
         }
     }
-}
-
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
-    'DEFAULT_PARSER_CLASSES': (
-        'rest_framework.parsers.JSONParser',
-    )
 }
