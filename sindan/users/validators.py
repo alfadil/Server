@@ -15,7 +15,7 @@ ALLOWED_USERNAME_CHARS = set([
     'Y', 'Z',
     # Numbers & special characters
     '0', '1', '2', '3', '4', '5', '6', '7',
-    '8', '9', '_', '-'
+    '8', '9', '-'
 ])
 
 
