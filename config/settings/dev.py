@@ -43,6 +43,10 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # until the task returns
 CELERY_ALWAYS_EAGER = True
 
+
+# Interctive Shell for debugging
+SHELL_PLUS = "bpython"
+
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
@@ -50,17 +54,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
     ),
     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
-
-
-# Interctive Shell for debugging
-SHELL_PLUS = "bpython"
-
-REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = (
-    'rest_framework.renderers.JSONRenderer',
-    'rest_framework.renderers.BrowsableAPIRenderer',
-)
-
-REST_FRAMEWORK['TEST_REQUEST_DEFAULT_FORMAT'] = 'json'

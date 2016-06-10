@@ -1,10 +1,10 @@
-from rest_framework import status
+# from rest_framework.decorators import detail_route, list_route
+# from rest_framework.response import Response
+# from rest_framework import status
 from rest_framework import viewsets
-from rest_framework.decorators import detail_route, list_route
-from rest_framework.response import Response
 
 from .models import User
-from .serializers import UserSerializer
+from . import serializers
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -12,8 +12,15 @@ class UserViewSet(viewsets.ModelViewSet):
     A viewset that provides the standard actions
     """
     queryset = User.objects.all()
-    serializer_class = UserSerializer
     lookup_field = 'username'
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return serializers.ListUserSerializer
+        elif self.request.method == 'POST':
+            return serializers.CreateUserSerializer
+        else:
+            return serializers.UpdateUserSerializer
 
     def perform_destroy(self, user):
         """
