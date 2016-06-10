@@ -38,7 +38,7 @@ SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['mangr.io'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['sindan.io'])
 # END SITE CONFIGURATION
 
 INSTALLED_APPS += []

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Django settings for mangr project.
+Django settings for Sindan project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
