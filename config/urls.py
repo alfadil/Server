@@ -17,9 +17,9 @@ from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
 
-from .router import router
+from sindan.users import urls as users_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(router.urls, namespace='api')),
+    url(r'^api/', include(users_urls, namespace='api')),
 ]
