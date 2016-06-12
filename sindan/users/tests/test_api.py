@@ -16,7 +16,7 @@ class UserTests(APITestCase):
         url = reverse('api:user-list')
 
         response = self.client.post(url, s.data)
-        # print(response.data)
+        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 1)
         self.assertNotEqual(User.objects.get(id=1).password, 'superstrong')

@@ -11,16 +11,17 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     A viewset that provides the standard actions
     """
+    serializer_class = serializers.UserSerializer
     queryset = User.objects.all()
     lookup_field = 'username'
 
-    def get_serializer_class(self):
+    '''    def get_serializer_class(self):
         if self.request.method == 'GET':
             return serializers.ListUserSerializer
         elif self.request.method == 'POST':
             return serializers.CreateUserSerializer
         else:
-            return serializers.UpdateUserSerializer
+            return serializers.UpdateUserSerializer'''
 
     def perform_destroy(self, user):
         """
