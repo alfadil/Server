@@ -4,18 +4,22 @@ from rest_framework.test import APITestCase
 
 from sindan.users.models import User
 from sindan.users.factories import UserFactory
-from sindan.users.serializers import UserSerializerWithPassword
+from sindan.users.serializers import UserSerializer
 
 
 class UserTests(APITestCase):
 
     def test_create_user(self):
         u = UserFactory.build(username="fakeuser", password="superstrong")
-        s = UserSerializerWithPassword(u)
-        print(s.data)
-        url = reverse('api:user-list')
+        s = UserSerializer(u)
+        data = s.data
 
-        response = self.client.post(url, s.data)
+        # FIXME: I don't know the reseaon, but the password
+        # doesn't get serialized
+        data['password'] = 'superstrong'
+
+        url = reverse('api:user-list')
+        response = self.client.post(url, data)
         print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 1)

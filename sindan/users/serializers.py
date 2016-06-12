@@ -20,7 +20,6 @@ class UserSerializer(serializers.ModelSerializer):
             'date_joined',
             'last_login',
         )
-        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = super().create(validated_data)
@@ -43,26 +42,3 @@ class UserSerializer(serializers.ModelSerializer):
         else:
             fields.pop('password')
         return fields
-
-
-class UserSerializerWithPassword(serializers.ModelSerializer):
-    """
-    NOTE: FOR TESTING PURPOSE ONLY, AND MUST NOT BE USED
-          EVER EXCEPT IN TESTING FILES.
-
-    This is needed because 'CreateUserSerializer' doesn't
-    serialize given password due 'write_only' attribute
-    """
-    class Meta:
-        model = User
-
-        exclude = (
-            # exclude admin fields
-            'is_staff',
-            'is_active',
-            'is_superuser',
-        )
-        read_only_fields = (
-            'date_joined',
-            'last_login',
-        )
