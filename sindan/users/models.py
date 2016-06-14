@@ -4,8 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 import django.contrib.auth.models as auth
 
-from . import validators
-
 
 class User(auth.AbstractBaseUser, auth.PermissionsMixin):
     """
@@ -16,10 +14,9 @@ class User(auth.AbstractBaseUser, auth.PermissionsMixin):
         max_length=30,
         unique=True,
         help_text=_(
-            'Required. 30 characters or fewer. '
-            'Letters, digits, - , and _ only.'
+            'Username should contains 30 characters or fewer, '
+            'including Letters, digits and - only.'
         ),
-        validators=[validators.username_validator],
         error_messages={
             'unique': _("A user with that username already exists."),
         },

@@ -10,8 +10,8 @@ class UserFactory(DjangoModelFactory):
 
     username = factory.Faker('user_name')
     email = factory.LazyAttribute(
-        lambda a: '{0}.{1}@example.com'.format(
-            a.first_name, a.last_name
+        lambda f: '{0}.{1}@example.com'.format(
+            f.first_name, f.last_name
         ).lower()
     )
     first_name = factory.Faker('first_name')

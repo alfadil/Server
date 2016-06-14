@@ -1,5 +1,5 @@
-from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+from rest_framework.serializers import ValidationError
 
 # Allowed characters in username field
 ALLOWED_USERNAME_CHARS = set([
@@ -27,3 +27,11 @@ def username_validator(username):
         'Username should contains 30 characters or fewer, '
         'including Letters, digits and _ only.'
     ))
+
+
+def passwords_match(data):
+    if 'password' in data:
+        if data['password'] != data['confirm_password']:
+            raise ValidationError({
+                'confirm_password': ["Passwords don't match"]
+            })

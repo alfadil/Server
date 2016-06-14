@@ -1,6 +1,9 @@
 > **Warning:** A work in progress.
 
-[![Build](https://travis-ci.org/Sindan/Sindan.svg?branch=master)](https://travis-ci.org/Sindan/Sindan)
+[![Build](https://travis-ci.org/Sindan/Server.svg?branch=master)](https://travis-ci.org/Sindan/Server) 
+[![Health](https://landscape.io/github/Sindan/Server/master/landscape.svg?style=flat)](https://landscape.io/github/Sindan/Server/master)
+[![Coverage](https://codecov.io/gh/Sindan/Server/branch/master/graph/badge.svg)](https://codecov.io/gh/Sindan/Server)
+
 
 # Sindan
 
@@ -37,12 +40,6 @@ Install the required dependencies using `pip`
 
 ```
 $ pip install -r requirements/dev.txt
-```
-
-Then you might need to do migration 
-
-```
-$ python manage.py migrate
 ```
 
 To perform testing simply run
