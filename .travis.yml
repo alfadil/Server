@@ -1,0 +1,29 @@
+sudo: false
+language: python
+python:
+  - "3.4"
+  - "3.5"
+
+env:
+  - DATABASE_URL=postgres://postgres@localhost/sindan
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - psql -c 'create database sindan;' -U postgres
+
+# command to install dependencies
+install:
+  - pip install -r requirements/dev.txt
+  - pip install codecov
+
+# command to run tests
+script:
+  - py.test --cov
+
+after_success:
+  - codecov

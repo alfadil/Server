@@ -38,7 +38,7 @@ SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
 # ------------------------------------------------------------------------------
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['mangr.io'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['sindan.io'])
 # END SITE CONFIGURATION
 
 INSTALLED_APPS += []
@@ -48,7 +48,7 @@ INSTALLED_APPS += []
 # Uploaded Media Files
 # ------------------------
 # See: http://django-storages.readthedocs.org/en/latest/index.html
-#INSTALLED_APPS += (
+# INSTALLED_APPS += (
 #    'storages',
 #)
 
@@ -59,9 +59,9 @@ INSTALLED_APPS += []
 # https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.loaders.cached.Loader
 TEMPLATES[0]['OPTIONS']['loaders'] = [
     ('django.template.loaders.cached.Loader', [
-        'django.template.loaders.filesystem.Loader', 
-        'django.template.loaders.app_directories.Loader', 
-        ]),
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    ]),
 ]
 
 # DATABASE CONFIGURATION

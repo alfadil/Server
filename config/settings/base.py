@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Django settings for mangr project.
+Django settings for Sindan project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
@@ -8,9 +8,7 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-from __future__ import absolute_import, unicode_literals
-import os
-
+# pylint: disable=line-too-long
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
@@ -33,10 +31,14 @@ DJANGO_APPS = [
     # 'django.contrib.humanize',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'rest_framework',
+]
 
 # Apps specific for this project go here.
-LOCAL_APPS = []
+LOCAL_APPS = [
+    'sindan.users'
+]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -77,15 +79,22 @@ TEMPLATES = [
 DEBUG = env.bool('DEBUG', False)
 
 
-# Database
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+WSGI_APPLICATION = 'config.wsgi.application'
+
+# DATABASE
+# ------------------------------------------------------------------------------
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL'),
-    }
+    'default': env.db(
+        'DATABASE_URL',
+        default='postgres://postgres@localhost/sindan'
+    ),
 }
 
 DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+AUTH_USER_MODEL = 'users.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -124,3 +133,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+"""
+JSON API (http://jsonapi.org) compatible rendering/parsing.
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework_json_api.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework_json_api.parsers.JSONParser',
+    ),
+    'DEFAULT_METADATA_CLASS':
+        'rest_framework_json_api.metadata.JSONAPIMetadata',
+
+    'EXCEPTION_HANDLER':
+        'rest_framework_json_api.exceptions.exception_handler',
+}
+"""
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ),
+}
