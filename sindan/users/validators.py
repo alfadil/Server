@@ -42,6 +42,13 @@ def username_validator(username):
         ))
 
 
+def email_validator(email):
+    if User.objects.filter(email=email).exists():
+        raise ValidationError(_(
+            "A user with that email address already exists."
+        ))
+
+
 def passwords_match(data):
     if 'password' in data:
         if data['password'] != data['confirm_password']:

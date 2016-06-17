@@ -5,6 +5,7 @@ from . import models
 
 class UserFactory(DjangoModelFactory):
 
+    # pylint: disable=R0903
     class Meta:
         model = models.User
 
