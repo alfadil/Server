@@ -3,6 +3,7 @@
 [![Build](https://travis-ci.org/Sindan/Server.svg?branch=master)](https://travis-ci.org/Sindan/Server) 
 [![Health](https://landscape.io/github/Sindan/Server/master/landscape.svg?style=flat)](https://landscape.io/github/Sindan/Server/master)
 [![Coverage](https://codecov.io/gh/Sindan/Server/branch/master/graph/badge.svg)](https://codecov.io/gh/Sindan/Server)
+[![Dependency Status](https://www.versioneye.com/user/projects/576384140735400043c1bacb/badge.svg?style=flat)](https://www.versioneye.com/user/projects/576384140735400043c1bacb)
 
 
 # Sindan

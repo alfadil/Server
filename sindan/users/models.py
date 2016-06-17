@@ -15,11 +15,8 @@ class User(auth.AbstractBaseUser, auth.PermissionsMixin):
         unique=True,
         help_text=_(
             'Username should contains 30 characters or fewer, '
-            'including Letters, digits and - only.'
-        ),
-        error_messages={
-            'unique': _("A user with that username already exists."),
-        },
+            'including letters, digits and - only.'
+        )
     )
 
     email = models.EmailField(
@@ -48,7 +45,7 @@ class User(auth.AbstractBaseUser, auth.PermissionsMixin):
         _('active'),
         default=True,
         help_text=_(
-            'Designates whether this user should be treated as active. '
+            'Designates whether this user should be treated as active.'
             'Unselect this instead of deleting accounts.'
         ),
     )

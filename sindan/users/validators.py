@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from rest_framework.serializers import ValidationError
+
+User = get_user_model()
 
 # Allowed characters in username field
 ALLOWED_USERNAME_CHARS = set([
@@ -21,12 +24,22 @@ ALLOWED_USERNAME_CHARS = set([
 
 def username_validator(username):
     m = set(username) - ALLOWED_USERNAME_CHARS
-    if len(m) == 0:
-        return
-    raise ValidationError(_(
-        'Username should contains 30 characters or fewer, '
-        'including Letters, digits and _ only.'
-    ))
+    # At lest there is one invalid char
+    if m:
+        raise ValidationError(_(
+            'Username should contains 30 characters or fewer, '
+            'including letters, digits and - only.'
+        ))
+    # Minimum length
+    elif len(username) < 6:
+        raise ValidationError(_(
+            'Username should contain at least 6 characters'
+        ))
+    # Exists ?
+    elif User.objects.filter(username=username).exists():
+        raise ValidationError(_(
+            'This username is already taken'
+        ))
 
 
 def passwords_match(data):
