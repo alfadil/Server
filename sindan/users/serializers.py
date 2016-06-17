@@ -30,6 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
         extra_kwargs = {
             'username': {'validators': [validators.username_validator]},
+            'email': {'validators': [validators.email_validator]},
             'password': {'write_only': True}
         }
 

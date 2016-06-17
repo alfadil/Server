@@ -6,7 +6,7 @@ Local settings
 - Add Django Debug Toolbar
 """
 
-# pylint: disable=wildcard-import,unused-wildcard-import
+# pylint: disable=W0401,W0614
 from .base import *  # noqa
 
 # DEBUG

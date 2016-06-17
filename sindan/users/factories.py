@@ -5,6 +5,7 @@ from . import models
 
 class UserFactory(DjangoModelFactory):
 
+    # pylint: disable=R0903
     class Meta:
         model = models.User
 
@@ -19,4 +20,7 @@ class UserFactory(DjangoModelFactory):
     is_active = True
     is_staff = False
     is_superuser = False
-    password = factory.Faker('password')
+    password = factory.PostGenerationMethodCall(
+        'set_password',
+        factory.Faker('password')
+    )

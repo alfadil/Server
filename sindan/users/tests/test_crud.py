@@ -14,8 +14,6 @@ class UserTests(APITestCase):
         s = UserSerializer(u)
         data = s.data
 
-        # FIXME: I don't know the reseaon, but the password
-        # doesn't get serialized
         data['password'] = 'superstrong'
         data['confirm_password'] = data['password']
 
@@ -32,18 +30,32 @@ class UserTests(APITestCase):
         s = UserSerializer(u)
         data = s.data
 
-        # FIXME: I don't know the reseaon, but the password
-        # doesn't get serialized
         data['password'] = 'password'
         data['confirm_password'] = data['password']
 
-        # username validation
+        # invalid username
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+        # invalid username length
+        data['username'] = 'short'
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         # password match
-        data['username'] = 'valid'
+        data['username'] = 'validusername'
         data['confirm_password'] = "doesn't match"
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_duplicate_username(self):
+        url = reverse('api:user-list')
+        # exists username
+        u = UserFactory.create(username="testuser")
+        s = UserSerializer(u)
+        data = s.data
+        data['password'] = 'password'
+        data['confirm_password'] = data['password']
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
